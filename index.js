@@ -63,6 +63,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  if (err.status === 404) {
+    res.status(404).send('Page not found!');
+  } else {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+  }
+});
+
+
 // Routes
 app.get('/', (req, res) => {
   res.render('index');
