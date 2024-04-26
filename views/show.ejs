@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
+    <title>Prectice</title>
+  </head>
+  <body>
+    <main class="bg-zinc-800 w-full min-h-screen text-zinc-300 p-10">
+      <h1>All User</h1>
+
+      <div class="users flex gap-3 mb-3 flex-wrap mt-3">
+
+
+        <% if (allUser.length > 0) { %>
+          <% allUser.forEach((user) => { %>
+            
+            <div class="user w-72 p-4 bg-zinc-700 rounded-lg">
+                <div class="bg-zinc-600 w-full h-72 rounded-lg overflow-hidden">
+                    <img class="object-cover w-full h-full object-top" src=<%= user.image %> alt="">
+                </div>
+                <h3 class="text-xl mt-3 tracking-tighter"><%= user.name %></h3>
+                <h5 class="text-zinc-500"><%= user.email %></h5>
+                <div class="flex gap-3 mt-5">
+                    <a class="text-zinc-200" href="/edit/<%= user._id %>">Edit User</a>
+                    <a class="text-red-500" href="/delete/<%= user._id %>">Delete User</a>
+                </div>
+            </div>
+
+            <% }); %>
+       <%  } else { %>
+          <h1 class="mt-5 text-zinc-500">We Have No User Right Now <a class="text-orange-500" href="/">Create User</a></h1>
+       <% } %>
+
+        
+
+      </div>
+      <a class="text-blue-500" href="/">Back To Home</a>
+    </main>
+  </body>
+</html>
