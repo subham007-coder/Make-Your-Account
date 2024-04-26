@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const userModel = require('./models/user.models');
-const PORT = 3500;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.json());
